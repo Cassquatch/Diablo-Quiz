@@ -1,0 +1,11 @@
+body{
+    background-image: url("/assets/images/highgate.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+h1{
+    font-size: 32pt;
+}
+#quiz-box{
+    background-image: url("/assets/images/quizBackground.jpg");
+}

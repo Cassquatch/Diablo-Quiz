@@ -9,3 +9,12 @@ h1{
 #quiz-box{
     background-image: url("/assets/images/quizBackground.jpg");
 }
+
+#timer{
+    display: none;
+}
+
+#question-block{
+    display: none;
+    background-image: url("/assets/images/quizBackground.jpg");
+}

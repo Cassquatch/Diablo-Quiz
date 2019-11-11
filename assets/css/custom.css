@@ -17,4 +17,5 @@ h1{
 #question-block{
     display: none;
     background-image: url("/assets/images/quizBackground.jpg");
+    color: red;
 }

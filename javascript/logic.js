@@ -11,11 +11,14 @@ let choice_one = document.querySelector("#choice1");
 let choice_two = document.querySelector("#choice2");
 let choice_three = document.querySelector("#choice3");
 let choice_four = document.querySelector("#choice4");
+let answer_message = document.querySelector("#answer-message");
 let time_left = 75;
-let question_time = 15;
+
 let interval;
 let i = 0;
 let print_question;
+let correct_answers = 0;
+let incorrect_answers = 0;
 
 
 
@@ -29,10 +32,6 @@ function generateQuestion(){
     quiz_box_id.setAttribute("style", "display: none");
     question_block_id.setAttribute("style", "display: block");
     startQuiz();
-    
-    print_question = setInterval(displayQuestion, 15000);
-   
-
 
 }
 
@@ -43,14 +42,16 @@ function displayQuestion(){
     }
     else{
         question_id.textContent = questions[i].question;
-        choice_one.textContent = "A: " + questions[i].choices[0];
-        choice_two.textContent = "B: " + questions[i].choices[1];
-        choice_three.textContent = "C: " + questions[i].choices[2];
-        choice_four.textContent = "D: " + questions[i].choices[3];
+        
+        choice_one.textContent =  questions[i].choices[0];
+        choice_two.textContent = questions[i].choices[1];
+        
+        choice_three.textContent = questions[i].choices[2];
+        choice_four.textContent = questions[i].choices[3];
 
     }
     
-    i++;
+    
 }
 
 
@@ -65,17 +66,47 @@ function startQuiz(){
 //countdown function
 function countdown(){
     timer_el.textContent = "Time left: " + time_left;
-    question_timer.textContent = "Question: " + question_time;
-    question_time--;
+    
     time_left--;
 
     if(time_left === 0){
         timer_el.textContent = "";
         clearInterval(interval);
     }
-    if(question_time === 0){
-        question_time = 15;
-    }
+  
+}
+
+function answerQuestion(){
+    let target = event.target;
+    console.log(target);
+    console.log(target.textContent);
+    console.log(questions[i].answer);
+   
+        //check the answer clicked with the correct answer(maybe try to give data tags and compare ids?) also think about instead of using setinterval, just recall generate function on button click, after comparing the clicked answer to the correct one
+        if(target.textContent === questions[i].answer){
+            // clearInterval(print_question);
+            correct_answers++;
+            i++;
+            answer_message.textContent = "Correct!";
+            displayQuestion();
+
+        }else{
+            incorrect_answers++;
+            i++;
+            answer_message.textContent = "Incorrect!";
+            displayQuestion();
+        }
+        if( i === questions.length){
+            clearInterval(interval);
+            timer_el.textContent = "";
+
+            answer_list.setAttribute("style", "display: none");
+            answer_message.setAttribute("style", "display: none");
+            question_id.textContent = "You answered " + " " + correct_answers + " " + "out of " +  " " + questions.length + " " +  "correctly.";
+        }
+
+        
+    
 }
 /*
 maybe make question block in html(just layout) and fill values with the properties of questions array, or look into how to rewrite html blocks from java script
@@ -85,3 +116,7 @@ maybe make question block in html(just layout) and fill values with the properti
 //add event listeners to all buttons
 // start_button.addEventListener("click", startQuiz);
 start_button.addEventListener("click", generateQuestion);
+choice_one.addEventListener("click", answerQuestion);
+choice_two.addEventListener("click", answerQuestion);
+choice_three.addEventListener("click", answerQuestion);
+choice_four.addEventListener("click", answerQuestion);

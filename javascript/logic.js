@@ -22,10 +22,12 @@ function generateQuestion(){
     quiz_box_id.setAttribute("style", "display: none");
     question_block_id.setAttribute("style", "display: block");
 
-    for(let i = 0; i < questions[i].choices.length; i++){
-        let li = document.createElement("li");
-        li.textContent = questions[i].choices[i];
-        answer_list.appendChild(li);
+    for(let i = 0; i < questions.length; i++){
+       for(let j = 0; j < questions[i].choices.length; j++){ 
+            let li = document.createElement("li");
+            li.textContent = questions[i].choices[j];
+            answer_list.appendChild(li);
+       }
     }
 
 

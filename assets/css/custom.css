@@ -10,8 +10,15 @@ h1{
     background-image: url("/assets/images/quizBackground.jpg");
 }
 
-#timer{
+#quiz-timer{
     display: none;
+    font-size: 22pt;
+    color: red;
+}
+#question-timer{
+    display: none;
+    font-size: 22pt;
+    color: red;
 }
 
 #question-block{
@@ -19,3 +26,4 @@ h1{
     background-image: url("/assets/images/quizBackground.jpg");
     color: red;
 }
+

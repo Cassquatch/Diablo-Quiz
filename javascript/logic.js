@@ -1,7 +1,8 @@
 //set global element variables to use and manipulate in this file and questions object array
 
 let quiz_box_id = document.querySelector("#quiz-box");
-let timer_el = document.querySelector("#timer");
+let timer_el = document.querySelector("#quiz-timer");
+let question_timer = document.querySelector("#question-timer");
 let start_button = document.querySelector("#start");
 let question_block_id = document.querySelector("#question-block");
 let question_id = document.querySelector("#question");
@@ -11,6 +12,7 @@ let choice_two = document.querySelector("#choice2");
 let choice_three = document.querySelector("#choice3");
 let choice_four = document.querySelector("#choice4");
 let time_left = 75;
+let question_time = 15;
 let interval;
 let i = 0;
 let print_question;
@@ -26,15 +28,16 @@ let print_question;
 function generateQuestion(){
     quiz_box_id.setAttribute("style", "display: none");
     question_block_id.setAttribute("style", "display: block");
-
-    displayQuestion();
-    let print_question = setInterval(displayQuestion, 17000);
+    startQuiz();
+    
+    print_question = setInterval(displayQuestion, 15000);
    
 
 
 }
 
 function displayQuestion(){
+    question_timer.setAttribute("style", "display: block");
     if(questions[i] === undefined){
         clearInterval(print_question);
     }
@@ -46,6 +49,7 @@ function displayQuestion(){
         choice_four.textContent = "D: " + questions[i].choices[3];
 
     }
+    
     i++;
 }
 
@@ -55,16 +59,22 @@ function displayQuestion(){
 function startQuiz(){
     interval = setInterval(countdown, 1000);
     timer_el.setAttribute("style", "display: block");
+    displayQuestion();
 }
 
 //countdown function
 function countdown(){
     timer_el.textContent = "Time left: " + time_left;
+    question_timer.textContent = "Question: " + question_time;
+    question_time--;
     time_left--;
 
     if(time_left === 0){
         timer_el.textContent = "";
         clearInterval(interval);
+    }
+    if(question_time === 0){
+        question_time = 15;
     }
 }
 /*
@@ -73,5 +83,5 @@ maybe make question block in html(just layout) and fill values with the properti
 
 
 //add event listeners to all buttons
-start_button.addEventListener("click", startQuiz);
+// start_button.addEventListener("click", startQuiz);
 start_button.addEventListener("click", generateQuestion);

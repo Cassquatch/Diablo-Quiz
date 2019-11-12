@@ -23,6 +23,7 @@ let correct_answers = 0;
 let incorrect_answers = 0;
 let score = 0;
 let highscore = 0;
+let highscore_holders = [];
 
 
 
@@ -115,6 +116,11 @@ function answerQuestion(){
 
         
     
+}
+
+function storeHighScores(){
+    //need to think of a way to store the names and scores(objects possible) and then display them on a highscore page
+    localStorage.setItem("high-score", JSON.stringify(highscore));
 }
 
 function newHighScore(){

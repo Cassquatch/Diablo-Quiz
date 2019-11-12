@@ -12,6 +12,8 @@ let choice_two = document.querySelector("#choice2");
 let choice_three = document.querySelector("#choice3");
 let choice_four = document.querySelector("#choice4");
 let answer_message = document.querySelector("#answer-message");
+let submit_highscore = document.querySelector("#submit-highscore");
+let highscore_message = document.querySelector("#highscore-message");
 let time_left = 75;
 
 let interval;
@@ -89,6 +91,7 @@ function answerQuestion(){
             // clearInterval(print_question);
             correct_answers++;
             i++;
+            answer_message.setAttribute("style", "color: lime");
             answer_message.textContent = "Correct!";
             displayQuestion();
 
@@ -96,7 +99,7 @@ function answerQuestion(){
             time_left -= 15;
             incorrect_answers++;
             i++;
-            answer_message.textContent = "Incorrect!";
+            answer_message.setAttribute("style", "color: red");            answer_message.textContent = "Incorrect!";
             displayQuestion();
         }
         if( i === questions.length){
@@ -104,13 +107,24 @@ function answerQuestion(){
             timer_el.textContent = "";
             score += time_left;
             answer_list.setAttribute("style", "display: none");
-            answer_message.setAttribute("style", "display: none");
+            // answer_message.setAttribute("style", "display: none");
             question_id.textContent = "You answered " + " " + correct_answers + " " + "out of " +  " " + questions.length + " " +  "correctly.";
             //add stuff here to keep a score and highscore variable
+           newHighScore();
         }
 
         
     
+}
+
+function newHighScore(){
+    if (score > highscore){
+        highscore = score;
+        highscore_message.setAttribute("style", "display: block");
+        submit_highscore.setAttribute("style", "display: block");
+
+
+    }
 }
 /*
 maybe make question block in html(just layout) and fill values with the properties of questions array, or look into how to rewrite html blocks from java script

@@ -13,7 +13,7 @@ h1{
 #quiz-timer{
     display: none;
     font-size: 22pt;
-    color: red;
+    color: white;
 }
 #question-timer{
     display: none;
@@ -25,5 +25,20 @@ h1{
     display: none;
     background-image: url("/assets/images/quizBackground.jpg");
     color: red;
+}
+
+#submit-highscore{
+    margin-left: 42%;
+    display: none;
+}
+
+#highscore-message{
+    
+    display: none;
+}
+
+#answer-message{
+    font-size: 20pt;
+    color: lime;
 }
 

@@ -19,6 +19,8 @@ let i = 0;
 let print_question;
 let correct_answers = 0;
 let incorrect_answers = 0;
+let score = 0;
+let highscore = 0;
 
 
 
@@ -36,7 +38,7 @@ function generateQuestion(){
 }
 
 function displayQuestion(){
-    question_timer.setAttribute("style", "display: block");
+   
     if(questions[i] === undefined){
         clearInterval(print_question);
     }
@@ -91,6 +93,7 @@ function answerQuestion(){
             displayQuestion();
 
         }else{
+            time_left -= 15;
             incorrect_answers++;
             i++;
             answer_message.textContent = "Incorrect!";
@@ -99,10 +102,11 @@ function answerQuestion(){
         if( i === questions.length){
             clearInterval(interval);
             timer_el.textContent = "";
-
+            score += time_left;
             answer_list.setAttribute("style", "display: none");
             answer_message.setAttribute("style", "display: none");
             question_id.textContent = "You answered " + " " + correct_answers + " " + "out of " +  " " + questions.length + " " +  "correctly.";
+            //add stuff here to keep a score and highscore variable
         }
 
         

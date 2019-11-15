@@ -47,10 +47,8 @@ function displayQuestion(){
     }
     else{
         question_id.textContent = questions[i].question;
-        
         choice_one.textContent =  questions[i].choices[0];
         choice_two.textContent = questions[i].choices[1];
-        
         choice_three.textContent = questions[i].choices[2];
         choice_four.textContent = questions[i].choices[3];
 
@@ -120,7 +118,9 @@ function answerQuestion(){
 
 function storeHighScores(){
     //need to think of a way to store the names and scores(objects possible) and then display them on a highscore page
-    localStorage.setItem("high-score", JSON.stringify(highscore));
+    let name = submit_highscore.value;
+    highscore_holders.push({name: name, high_score: score});
+    localStorage.setItem("high-score", JSON.stringify(highscore_holders));
 }
 
 function newHighScore(){
@@ -139,8 +139,10 @@ maybe make question block in html(just layout) and fill values with the properti
 
 //add event listeners to all buttons
 // start_button.addEventListener("click", startQuiz);
+
 start_button.addEventListener("click", generateQuestion);
 choice_one.addEventListener("click", answerQuestion);
 choice_two.addEventListener("click", answerQuestion);
 choice_three.addEventListener("click", answerQuestion);
 choice_four.addEventListener("click", answerQuestion);
+submit_highscore.addEventListener("submit", storeHighScores);

@@ -14,6 +14,9 @@ let choice_four = document.querySelector("#choice4");
 let answer_message = document.querySelector("#answer-message");
 let submit_highscore = document.querySelector("#submit-highscore");
 let highscore_message = document.querySelector("#highscore-message");
+let view_highscores = document.querySelector("#view-highscores");
+let highscore_initials = document.querySelector("#highscore-initials");
+let highscore_list = document.querySelector("#highscore-list");
 let time_left = 75;
 
 let interval;
@@ -117,21 +120,37 @@ function answerQuestion(){
 }
 
 function storeHighScores(){
+    event.preventDefault();
     //need to think of a way to store the names and scores(objects possible) and then display them on a highscore page
-    let name = submit_highscore.value;
+    let name = highscore_initials.value;
     highscore_holders.push({name: name, high_score: score});
     localStorage.setItem("high-score", JSON.stringify(highscore_holders));
 }
 
-function newHighScore(){
-    if (score > highscore){
-        highscore = score;
-        highscore_message.setAttribute("style", "display: block");
-        submit_highscore.setAttribute("style", "display: block");
+function displayHighScores(){
+    let get_scores = JSON.parse(localStorage.getItem("high-score"));
 
+    if(get_scores !== null){
+        highscore_holders = get_scores;
+    }
+    for(let j = 0; j < highscore_holders.length; j++){
+        let li = document.createElement("li");
+        li.textContent = highscore_holders[j].name + highscore_holders[j].score;
+        highscore_list.append(li);
+    }
+
+    window.location.href = "highscores.html";
+    
+}
+
+function newHighScore(){
+ 
+        highscore_message.setAttribute("style", "display: block");
+        highscore_initials.setAttribute("style", "display: block");
+        view_highscores.setAttribute("style", "display: block");
 
     }
-}
+
 /*
 maybe make question block in html(just layout) and fill values with the properties of questions array, or look into how to rewrite html blocks from java script
 */
@@ -146,3 +165,4 @@ choice_two.addEventListener("click", answerQuestion);
 choice_three.addEventListener("click", answerQuestion);
 choice_four.addEventListener("click", answerQuestion);
 submit_highscore.addEventListener("submit", storeHighScores);
+view_highscores.addEventListener("click", displayHighScores);

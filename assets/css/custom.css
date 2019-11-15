@@ -27,7 +27,7 @@ h1{
     color: red;
 }
 
-#submit-highscore{
+#highscore-initials{
     margin-left: 42%;
     display: none;
 }
@@ -40,5 +40,9 @@ h1{
 #answer-message{
     font-size: 20pt;
     color: lime;
+}
+
+#view-highscores{
+    display: none;
 }
 

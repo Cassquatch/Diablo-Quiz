@@ -26,16 +26,21 @@ let correct_answers = 0;
 let incorrect_answers = 0;
 let score = 0;
 let highscore = 0;
-let highscore_holders = [];
+let highscore_holders = JSON.parse(localStorage.getItem("high-score"));
 
 
 
 
-
-
+console.log(highscore_holders);
+if(highscore_holders === null){
+    highscore_holders = [];
+}
 //declare functions to write into the html file to display questions and answers
 //make each answer option a button
 //declare a generate  question function
+$(document).ready(function(){
+
+
 function generateQuestion(){
     quiz_box_id.setAttribute("style", "display: none");
     question_block_id.setAttribute("style", "display: block");
@@ -124,22 +129,14 @@ function storeHighScores(){
     //need to think of a way to store the names and scores(objects possible) and then display them on a highscore page
     let name = highscore_initials.value;
     highscore_holders.push({name: name, high_score: score});
+    
     localStorage.setItem("high-score", JSON.stringify(highscore_holders));
 }
 
-function displayHighScores(){
-    let get_scores = JSON.parse(localStorage.getItem("high-score"));
-
-    if(get_scores !== null){
-        highscore_holders = get_scores;
-    }
-    for(let j = 0; j < highscore_holders.length; j++){
-        let li = document.createElement("li");
-        li.textContent = highscore_holders[j].name + highscore_holders[j].score;
-        highscore_list.append(li);
-    }
-
+function redirect(){
     window.location.href = "highscores.html";
+   
+
     
 }
 
@@ -159,10 +156,11 @@ maybe make question block in html(just layout) and fill values with the properti
 //add event listeners to all buttons
 // start_button.addEventListener("click", startQuiz);
 
+view_highscores.addEventListener("click", redirect);
 start_button.addEventListener("click", generateQuestion);
 choice_one.addEventListener("click", answerQuestion);
 choice_two.addEventListener("click", answerQuestion);
 choice_three.addEventListener("click", answerQuestion);
 choice_four.addEventListener("click", answerQuestion);
 submit_highscore.addEventListener("submit", storeHighScores);
-view_highscores.addEventListener("click", displayHighScores);
+});

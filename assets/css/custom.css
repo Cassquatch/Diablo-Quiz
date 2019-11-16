@@ -1,13 +1,15 @@
 body{
-    background-image: url("/assets/images/highgate.jpg");
+    background-image: url("../images/highgate.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
 }
 h1{
     font-size: 32pt;
 }
 #quiz-box{
-    background-image: url("/assets/images/quizBackground.jpg");
+    background-image: url("../images/quizBackground.jpg");
 }
 
 #quiz-timer{
@@ -23,7 +25,7 @@ h1{
 
 #question-block{
     display: none;
-    background-image: url("/assets/images/quizBackground.jpg");
+    background-image: url("../images/quizBackground.jpg");
     color: red;
 }
 

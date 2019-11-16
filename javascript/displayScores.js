@@ -9,7 +9,12 @@ if(get_scores === null){
 
 for(let j = 0; j < get_scores.length; j++){
     let li = document.createElement("li");
-    li.textContent = get_scores[j].name + " " +  get_scores[j].high_score;
+    li.textContent = "Initals: " + " " + get_scores[j].name + " " + "Score: " + " " + get_scores[j].high_score;
     console.log(li);
-    highscore_list.appendChild(li);
+    highscore_list.prepend(li);
 }
+
+function redirect(){
+    window.location.href = "index.html";
+}
+document.querySelector("#back").addEventListener("click", redirect);

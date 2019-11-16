@@ -82,6 +82,9 @@ function countdown(){
 
     if(time_left === 0){
         timer_el.textContent = "";
+        question_id.textContent = "Time ran out!"
+        answer_list.setAttribute("style", "display: none");
+        
         clearInterval(interval);
     }
   

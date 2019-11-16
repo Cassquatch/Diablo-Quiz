@@ -1,6 +1,18 @@
 # Diablo-Quiz
 This application is a diablo lore quiz. Once started, the user has 75 seconds to answer 5 questions about Diablo lore, once completed, a score is computed based on time left on the clock after all questions are answered, but answering a question wrong removes 15 seconds from the time left, therefore hurting your score.
 
+# Start Screen
+![quiz start](assets/images/startscreen.png)
+
+# Questions
+![questions](assets/images/questions.png)
+
+# Finished Screen
+![quiz finished](assets/images/quizFinished.png)
+
+# Highscores Page
+![highscores](assets/images/highscoreScreen.png)
+
 # Built With
 * HTML
 * CSS

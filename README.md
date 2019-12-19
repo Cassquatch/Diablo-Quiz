@@ -13,6 +13,9 @@ This application is a diablo lore quiz. Once started, the user has 75 seconds to
 # Highscores Page
 ![highscores](assets/images/highscoreScreen.png)
 
+# Deployed Application
+https://cassquatch.github.io/Diablo-Quiz/
+
 # Built With
 * HTML
 * CSS
